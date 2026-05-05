@@ -1,0 +1,317 @@
+:root {
+    --blade-color: #03fd4e;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+/* Star Wars Background Effects using Pure CSS */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 160px 120px, #ddd, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 200px 50px, #fff, rgba(0, 0, 0, 0));
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    z-index: -3;
+}
+
+.twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(2px 2px at 50px 50px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2.5px 2.5px at 100px 150px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 180px 100px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(3px 3px at 250px 200px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0));
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: move-twink 100s linear infinite;
+    z-index: -2;
+    opacity: 0.6;
+}
+
+@keyframes move-twink {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1000px 500px;
+    }
+}
+
+/* Death Star */
+.death-star {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 30% 30%, #a9a9a9, #444);
+    border-radius: 50%;
+    box-shadow: inset -20px -20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    overflow: hidden;
+    /* Optional: add some horizontal lines for texture */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 30% 30%, #a9a9a9, #444);
+    background-size: 20px 20px, 20px 20px, 100% 100%;
+}
+
+.death-star::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.death-star .dish {
+    position: absolute;
+    top: 20%;
+    right: 25%;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #555, #222);
+    border-radius: 50%;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.death-star .dish::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, #333, #111);
+    border-radius: 50%;
+}
+
+/* Color Controls */
+.controls {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.color-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.color-btn:hover {
+    transform: scale(1.15);
+}
+
+.color-btn.active {
+    border: 2px solid white;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px var(--blade-color);
+}
+
+/* Lightsaber */
+.lightsaber {
+    position: absolute;
+    bottom: 3em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+}
+
+/* Hilt Styling (Luke ROTJ Inspired) */
+.hilt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 3.5em;
+    margin: 0 auto;
+}
+
+/* Emitter */
+.emitter {
+    width: 2.8em;
+    height: 1.5em;
+    background: linear-gradient(90deg, #888 0%, #ccc 20%, #777 50%, #ddd 80%, #666 100%);
+    border-radius: 0.2em 0.2em 0 0;
+    box-shadow: inset 0 -0.2em 0.5em rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.emitter-base {
+    width: 3.2em;
+    height: 1em;
+    background: linear-gradient(90deg, #b08d57 0%, #e5c158 20%, #a37c35 50%, #e5c158 80%, #b08d57 100%);
+    /* Brass color */
+    border-radius: 0.1em;
+    box-shadow: 0 0.2em 0.3em rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Thin Neck */
+.thin-neck {
+    width: 1em;
+    height: 2em;
+    background: linear-gradient(90deg, #555 0%, #aaa 20%, #444 50%, #999 80%, #333 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.neck-ring {
+    width: 1.4em;
+    height: 0.2em;
+    background: linear-gradient(90deg, #222 0%, #444 50%, #111 100%);
+    border-radius: 0.1em;
+}
+
+/* Switch Section */
+.switch-section {
+    width: 3.2em;
+    height: 3.5em;
+    background: linear-gradient(90deg, #999 0%, #eee 20%, #888 50%, #ddd 80%, #777 100%);
+    position: relative;
+    border-radius: 0.1em;
+}
+
+.control-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2em;
+    height: 2em;
+    background: #222;
+    border: 0.1em solid #555;
+    border-radius: 0.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.6);
+}
+
+/* Grip Section */
+.grip {
+    width: 2.8em;
+    height: 8em;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.2em 0;
+    border-left: 0.2em solid #333;
+    border-right: 0.2em solid #000;
+}
+
+.rib {
+    width: 3.2em;
+    height: 0.4em;
+    background: #0a0a0a;
+    border-top: 0.1em solid #333;
+    border-bottom: 0.1em solid #000;
+    border-radius: 0.1em;
+    box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.8);
+}
+
+/* Pommel */
+.pommel {
+    width: 3.2em;
+    height: 1.5em;
+    background: linear-gradient(90deg, #777 0%, #ccc 20%, #666 50%, #bbb 80%, #555 100%);
+    border-radius: 0 0 0.5em 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 0.2em;
+}
+
+.pommel-base {
+    width: 2em;
+    height: 0.5em;
+    background: #222;
+    border-radius: 0 0 0.3em 0.3em;
+}
+
+.lightsaber .blade {
+    position: relative;
+    width: 1.8em;
+    height: 0;
+    background: #fff;
+    border-radius: 2em 2em 0 0;
+    margin: 0 auto;
+    transition: height 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.lightsaber .blade::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--blade-color);
+    filter: blur(15px);
+    z-index: -1;
+    transition: background 0.4s ease-out;
+}
+
+.switch-btn {
+    width: 1em;
+    height: 1em;
+    background: #b10000;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 0 0 0.3em rgba(0, 0, 0, 0.8), 0 0 0.2em rgba(255, 0, 0, 0.5);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.switch-btn:hover {
+    background: #ff1a1a;
+    box-shadow: inset 0 0 0.3em rgba(0, 0, 0, 0.5), 0 0 0.5em rgba(255, 26, 26, 0.8);
+}
+
+/* Toggle Class for Javascript */
+.lightsaber .blade-height {
+    height: 40em;
+    box-shadow: 0 0 20px var(--blade-color), inset 0 0 10px #fff;
+}
